@@ -21,19 +21,20 @@ interface ParagraphProps
   extends HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof paragraphVariants> {}
 
-const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  ({ className, size, children, ...props }, ref) => {
-    return (
-      <p
-        ref={ref}
-        {...props}
-        className={cn(paragraphVariants({ size, className }))}
-      >
-        {children}
-      </p>
-    );
-  }
-);
+const Paragraph: React.FC<ParagraphProps> = forwardRef<
+  HTMLParagraphElement,
+  ParagraphProps
+>(({ className, size, children, ...props }, ref) => {
+  return (
+    <p
+      ref={ref}
+      {...props}
+      className={cn(paragraphVariants({ size, className }))}
+    >
+      {children}
+    </p>
+  );
+});
 
 Paragraph.displayName = "Paragraph";
 

@@ -22,19 +22,20 @@ interface HeadingProps
   extends HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {}
 
-const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ className, size, children, ...props }, ref) => {
-    return (
-      <h1
-        ref={ref}
-        {...props}
-        className={cn(headingVariants({ size, className }))}
-      >
-        {children}
-      </h1>
-    );
-  }
-);
+const Heading: React.FC<HeadingProps> = forwardRef<
+  HTMLHeadingElement,
+  HeadingProps
+>(({ className, size, children, ...props }, ref) => {
+  return (
+    <h1
+      ref={ref}
+      {...props}
+      className={cn(headingVariants({ size, className }))}
+    >
+      {children}
+    </h1>
+  );
+});
 
 Heading.displayName = "Heading";
 
